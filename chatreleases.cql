@@ -94,8 +94,10 @@ CREATE
 		(referrals)-[:BELONGS_TO]->(vistajettech),
 			(gvreferralsone)-[:BELONGS_TO]->(referrals),
 			(gvreferralstwo)-[:BELONGS_TO]->(referrals),
-				(jackson)-[:WORKED_ON {function: "BackPO"}]->(gvreferralstwo)
+				(jackson)-[:WORKED_ON {function: "BackPO"}]->(gvreferralstwo),
 
-
+		(gvchat)-[:BELONGS_TO]->(vistajettech),
+			(gvchatone)-[:BELONGS_TO]->(gvchat),
+			(gvchattwo)-[:BELONGS_TO]->(gvchat)
 
 	;
