@@ -146,7 +146,7 @@ CREATE
 		(cmareferralsone)-[:BELONGS_TO]->(cma),
 		(cmareferralstwo)-[:BELONGS_TO]->(cma),
 		(cmaadhocone)-[:BELONGS_TO]->(cma),
-		(cmxadhoctwo)-[:BELONGS_TO]->(cma),
+		(cmaadhoctwo)-[:BELONGS_TO]->(cma),
 		(cmaadhocthree)-[:BELONGS_TO]->(cma),
 		(cmastatisticsone)-[:BELONGS_TO]->(cma),
 		(cmacancelflightsone)-[:BELONGS_TO]->(cma),
