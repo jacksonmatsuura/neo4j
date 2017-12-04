@@ -196,7 +196,7 @@ CREATE
 	(adhoc)<-[:BELONGS_TO]-(cmaadhoctwo),
 	(adhoc)<-[:BELONGS_TO]-(cmxadhoctwo),
 	(adhoc)<-[:BELONGS_TO]-(vwadhoctwo),
-	(adhoc)<-[:BELONGS_TO]-(cmadhocthree),
+	(adhoc)<-[:BELONGS_TO]-(cmaadhocthree),
 	(adhoc)<-[:BELONGS_TO]-(cmxadhocthree),
 	(adhoc)<-[:BELONGS_TO]-(vwadhocthree),
 	(statistics)<-[:BELONGS_TO]-(cmastatisticsone),
