@@ -448,13 +448,13 @@ CREATE
 	(generalimprovements)<-[:BELONGS_TO]-(cmxgeneralimprovementstwo),
 	(generalimprovements)<-[:BELONGS_TO]-(vwgeneralimprovementstwo),
 
-	(achat)<-[:BELONGS_TO]-(androidchat),
+	(achat)-[:BELONGS_TO]->(androidchat),
 	(achat)-[:RELATES_TO]->(gvchat),
 
-	(ichat)<-[:BELONGS_TO]-(ioschat),
+	(ichat)-[:BELONGS_TO]->(ioschat),
 	(ichat)-[:RELATES_TO]->(gvchat),
 	
-	(echat)<-[:BELONGS_TO]-(embeddablechat),
+	(echat)-[:BELONGS_TO]->(embeddablechat),
 	(echat)-[:RELATES_TO]->(gvchat),
 	
 	(gvchat)<-[:BELONGS_TO]-(gvchatone),
