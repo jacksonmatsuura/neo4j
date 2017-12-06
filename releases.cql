@@ -356,7 +356,7 @@ CREATE
 
 	(ioschat)-[:BELONGS_TO]->(chat),
 	(ioschat)-[:RELATES_TO]->(cma),
-	(ioschat)-[:RELATES_TO]->(customerapps)
+	(ioschat)-[:RELATES_TO]->(customerapps),
 
 		(chatconversationcma)-[:BELONGS_TO]->(ioschat),
 		(chatconversationcma)<-[:WORKED_ON {function: "FrontPO"}]-(alvaro),
