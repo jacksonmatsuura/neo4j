@@ -112,6 +112,16 @@ CREATE
 	(taina:Person {name: "Taina", surname: "Sabino", function: "PO", team: "Wheeler Team"}),
 	(talilane:Person {name: "Talilane", surname: "DeGrandi", function: "PO", team: "Wheeler Team"}),
 	(mike:Person {name: "Michael", surname: "Sefain", function: "PM", team: ""}),
+	(carmo:Person {name: "Flavio", surname: "Carmo", function: "DevLead", team: "Carmo's Team"}),
+	(rener:Person {name: "Rener", surname: "Baffa", function: "DevLead", team: "Baffa's Team"}),
+	(fernandes:Person {name: "Sidarta", surname: "Fernandes", function: "DevLead", team: "Fernandes' Team"}),
+
+
+	// TEAM
+
+	(teamcarmo:Team {name: "Carmo's Team", description: "BackEnd Development team"}),
+	(teambaffa:Team {name: "Baffa's Team", description: "FrontEnd Development team"}),
+	(teamfernandes:Team {name: "Fernandes' Team", description: "FrontEnd Development team"}),
 
 	// TERMS
 
@@ -128,43 +138,22 @@ CREATE
 	(backend:Term {name: "Back End", description: ""}),
 	(frontend:Term {name: "Front End", description: ""}),
 	(releasejira:Term {name: "Release JIRA", description: ""}),
-	(bug:Term {name: "Bug", description: ""}),
 	(backlog:Term {name: "Backlog", description: ""}),
 	(sprint:Term {name: "Sprint", description: ""}),
-	(planning:Term {name: "Planning", description: ""}),
+	(planning:Term {name: "Sprint Planning", description: ""}),
 	(grooming:Term {name: "Grooming", description: ""}),
 	(scrum:Term {name: "SCRUM", description: ""}),
 	(jira:Term {name: "JIRA", description: ""}),
 	(confluence:Term {name: "Confluence", description: ""}),
-	(bump:Term {name: "Bump", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
-	(:Term {name: "", description: ""}),
+	(retrospective:Term {name: "Sprint Retrospective", description: ""}),
+	(dev:Term {name: "Development", description: ""}),
+	(qa:Term {name: "Quality", description: ""}),
+	(po:Term {name: "Product Owner", description: ""}),
+	(pm:Term {name: "Project Manager", description: ""}),
+	(devlead:Term {name: "Development Leader", description: ""}),
+	(qalead:Term {name: "Quality Leader", description: ""}),
+	(devteam:Term {name: "Development Team", description: ""}),
+	(qateam:Term {name: "Quality Team", description: ""}),
 
 	// RELATIONSHIPS
 
@@ -253,85 +242,133 @@ CREATE
 	(ichat)-[:BELONGS_TO]->(ioschat),
 	(echat)-[:BELONGS_TO]->(embeddablechat),
 		
-	// RELEASE X PERSON
+	// RELEASE X PERSON-TEAM
 
-	(gvflightcancellationone)<-[:WORKED_ON {function: "BackPO"}]-(jackson),
-	(gvspecialloadsone)<-[:WORKED_ON {function: "BackPO"}]-(jackson),
-	(gvreferralstwo)<-[:WORKED_ON {function: "BackPO"}]-(jackson),
-	(cmanewregflowone)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmanewregflowone)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmanewregflowtwo)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmanewregflowtwo)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmageneralimprovementsone)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmageneralimprovementsone)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmageneralimprovementstwo)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmageneralimprovementstwo)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmareferralsone)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmareferralsone)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmareferralstwo)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmareferralstwo)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(gvchatone)<-[:WORKED_ON {function: "BackPO"}]-(alberice),
-	(gvchattwo)<-[:WORKED_ON {function: "BackPO"}]-(alberice),
-	(cmaadhocone)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmaadhocone)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmaadhoctwo)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmaadhoctwo)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmaadhocthree)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmaadhocthree)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmacancelflightsone)<-[:WORKED_ON {function: "FrontPO"}]-(alvaro),
-	(cmaspecialloadsone)<-[:WORKED_ON {function: "FrontPO"}]-(alvaro),
-	(cmxnewregflowone)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmxnewregflowone)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmxnewregflowtwo)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmxnewregflowtwo)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmxgeneralimprovementsone)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmxgeneralimprovementsone)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmxgeneralimprovementstwo)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmxgeneralimprovementstwo)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmxreferralsone)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmxreferralsone)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmxreferralstwo)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmxreferralstwo)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmxadhocone)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmxadhocone)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmxadhoctwo)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmxadhoctwo)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmxadhocthree)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(cmxadhocthree)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(cmxcancelflightsone)<-[:WORKED_ON {function: "FrontPO"}]-(alvaro),
-	(cmxspecialloadsone)<-[:WORKED_ON {function: "FrontPO"}]-(alvaro),
-	(vwnewregflowone)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(vwnewregflowone)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(vwnewregflowtwo)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(vwnewregflowtwo)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(vwgeneralimprovementsone)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(vwgeneralimprovementsone)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(vwgeneralimprovementstwo)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(vwgeneralimprovementstwo)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(vwreferralsone)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(vwreferralsone)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(vwreferralstwo)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(vwreferralstwo)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(vwadhocone)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(vwadhocone)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(vwadhoctwo)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(vwadhoctwo)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(vwadhocthree)<-[:WORKED_ON {function: "FrontPO"}]-(talilane),
-	(vwadhocthree)<-[:WORKED_ON {function: "FrontPO"}]-(taina),
-	(vwcancelflightsone)<-[:WORKED_ON {function: "FrontPO"}]-(alvaro),
-	(vwspecialloadsone)<-[:WORKED_ON {function: "FrontPO"}]-(alvaro),
-	(chatauthone)<-[:WORKED_ON {function: "BackPO"}]-(alberice),
-	(chatauthtwo)<-[:WORKED_ON {function: "BackPO"}]-(alberice),
-	(chatmsone)<-[:WORKED_ON {function: "BackPO"}]-(alberice),
-	(chatmstwo)<-[:WORKED_ON {function: "BackPO"}]-(alberice),
-	(fbchatone)<-[:WORKED_ON {function: "BackPO"}]-(alberice),
-	(fbchattwo)<-[:WORKED_ON {function: "BackPO"}]-(alberice),
-	(chatconversationcma)<-[:WORKED_ON {function: "FrontPO"}]-(alvaro),
-	(chatbookingcma)<-[:WORKED_ON {function: "FrontPO"}]-(alvaro),
-	(chatconversationcmx)<-[:WORKED_ON {function: "FrontPO"}]-(alvaro),
-	(chatbookingcmx)<-[:WORKED_ON {function: "FrontPO"}]-(alvaro),
-	(chatconversationvw)<-[:WORKED_ON {function: "FrontPO"}]-(alvaro),
-	(chatbookingvw)<-[:WORKED_ON {function: "FrontPO"}]-(alvaro),
+	(gvflightcancellationone)<-[:WORKED_ON {function: "BackEnd PO"}]-(jackson),
+	(gvflightcancellationone)<-[:WORKED_ON {function: "FullStack PO"}]-(alvaro),
+	(gvflightcancellationone)<-[:WORKED_ON {function: "PM"}]-(mike),
+	(gvflightcancellationone)<-[:WORKED_ON {function: "DevTeam"}]-(teamcarmo),
+	(gvspecialloadsone)<-[:WORKED_ON {function: "BackEnd PO"}]-(jackson),
+	(gvspecialloadsone)<-[:WORKED_ON {function: "FullStack PO"}]-(alvaro),
+	(gvspecialloadsone)<-[:WORKED_ON {function: "PM"}]-(mike),
+	(gvspecialloadsone)<-[:WORKED_ON {function: "DevTeam"}]-(teamcarmo),
+	(gvreferralstwo)<-[:WORKED_ON {function: "BackEnd PO"}]-(jackson),
+	(cmanewregflowone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmanewregflowone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmanewregflowone)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmanewregflowtwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmanewregflowtwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmanewregflowtwo)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmageneralimprovementsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmageneralimprovementsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmageneralimprovementsone)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmageneralimprovementstwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmageneralimprovementstwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmageneralimprovementstwo)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmareferralsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmareferralsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmareferralsone)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmareferralstwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmareferralstwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmareferralstwo)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(gvchatone)<-[:WORKED_ON {function: "BackEnd PO"}]-(alberice),
+	(gvchatone)<-[:WORKED_ON {function: "DevTeam"}]-(teamcarmo),
+	(gvchattwo)<-[:WORKED_ON {function: "BackEnd PO"}]-(alberice),
+	(gvchattwo)<-[:WORKED_ON {function: "DevTeam"}]-(teamcarmo),
+	(cmaadhocone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmaadhocone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmaadhocone)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmaadhoctwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmaadhoctwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmaadhoctwo)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmaadhocthree)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmaadhocthree)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmaadhocthree)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmacancelflightsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(alvaro),
+	(cmacancelflightsone)<-[:WORKED_ON {function: "FullStack PO"}]-(alvaro),
+	(cmacancelflightsone)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmaspecialloadsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(alvaro),
+	(cmaspecialloadsone)<-[:WORKED_ON {function: "FullStack PO"}]-(alvaro),
+	(cmaspecialloadsone)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmxnewregflowone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmxnewregflowone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmxnewregflowone)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmxnewregflowtwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmxnewregflowtwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmxnewregflowtwo)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmxgeneralimprovementsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmxgeneralimprovementsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmxgeneralimprovementsone)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmxgeneralimprovementstwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmxgeneralimprovementstwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmxgeneralimprovementstwo)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmxreferralsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmxreferralsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmxreferralsone)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmxreferralstwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmxreferralstwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmxreferralstwo)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmxadhocone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmxadhocone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmxadhocone)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmxadhoctwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmxadhoctwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmxadhoctwo)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmxadhocthree)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(cmxadhocthree)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(cmxadhocthree)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmxcancelflightsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(alvaro),
+	(cmxcancelflightsone)<-[:WORKED_ON {function: "FullStack"}]-(alvaro),
+	(cmxcancelflightsone)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(cmxspecialloadsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(alvaro),
+	(cmxspecialloadsone)<-[:WORKED_ON {function: "FullStack"}]-(alvaro),
+	(cmxspecialloadsone)<-[:WORKED_ON {function: "DevTeam"}]-(teamfernandes),
+	(vwnewregflowone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(vwnewregflowone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(vwnewregflowone)<-[:WORKED_ON {function: "DevTeam"}]-(teambaffa),
+	(vwnewregflowtwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(vwnewregflowtwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(vwnewregflowtwo)<-[:WORKED_ON {function: "DevTeam"}]-(teambaffa),
+	(vwgeneralimprovementsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(vwgeneralimprovementsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(vwgeneralimprovementsone)<-[:WORKED_ON {function: "DevTeam"}]-(teambaffa),
+	(vwgeneralimprovementstwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(vwgeneralimprovementstwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(vwgeneralimprovementstwo)<-[:WORKED_ON {function: "DevTeam"}]-(teambaffa),
+	(vwreferralsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(vwreferralsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(vwreferralsone)<-[:WORKED_ON {function: "DevTeam"}]-(teambaffa),
+	(vwreferralstwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(vwreferralstwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(vwreferralstwo)<-[:WORKED_ON {function: "DevTeam"}]-(teambaffa),
+	(vwadhocone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(vwadhocone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(vwadhocone)<-[:WORKED_ON {function: "DevTeam"}]-(teambaffa),
+	(vwadhoctwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(vwadhoctwo)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(vwadhoctwo)<-[:WORKED_ON {function: "DevTeam"}]-(teambaffa),
+	(vwadhocthree)<-[:WORKED_ON {function: "FrontEnd PO"}]-(talilane),
+	(vwadhocthree)<-[:WORKED_ON {function: "FrontEnd PO"}]-(taina),
+	(vwadhocthree)<-[:WORKED_ON {function: "DevTeam"}]-(teambaffa),
+	(vwcancelflightsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(alvaro),
+	(vwcancelflightsone)<-[:WORKED_ON {function: "FullStack PO"}]-(alvaro),
+	(vwcancelflightsone)<-[:WORKED_ON {function: "DevTeam"}]-(teambaffa),
+	(vwspecialloadsone)<-[:WORKED_ON {function: "FrontEnd PO"}]-(alvaro),
+	(vwspecialloadsone)<-[:WORKED_ON {function: "FullStack PO"}]-(alvaro),
+	(vwspecialloadsone)<-[:WORKED_ON {function: "DevTeam"}]-(teambaffa),
+	(chatauthone)<-[:WORKED_ON {function: "BackEnd PO"}]-(alberice),
+	(chatauthtwo)<-[:WORKED_ON {function: "BackEnd PO"}]-(alberice),
+	(chatmsone)<-[:WORKED_ON {function: "BackEnd PO"}]-(alberice),
+	(chatmstwo)<-[:WORKED_ON {function: "BackEnd PO"}]-(alberice),
+	(fbchatone)<-[:WORKED_ON {function: "BackEnd PO"}]-(alberice),
+	(fbchattwo)<-[:WORKED_ON {function: "BackEnd PO"}]-(alberice),
+	(chatconversationcma)<-[:WORKED_ON {function: "FrontEnd PO"}]-(alvaro),
+	(chatbookingcma)<-[:WORKED_ON {function: "FrontEnd PO"}]-(alvaro),
+	(chatconversationcmx)<-[:WORKED_ON {function: "FrontEnd PO"}]-(alvaro),
+	(chatbookingcmx)<-[:WORKED_ON {function: "FrontEnd PO"}]-(alvaro),
+	(chatconversationvw)<-[:WORKED_ON {function: "FrontEnd PO"}]-(alvaro),
+	(chatbookingvw)<-[:WORKED_ON {function: "FrontEnd PO"}]-(alvaro),
+
 
 	// RELEASE X RELEASE
 
@@ -367,99 +404,7 @@ CREATE
 	(gvchattwo)-[:RELATES_TO]->(chatconversationcma),
 	(gvchattwo)-[:RELATES_TO]->(chatconversationcmx),
 	(gvchattwo)-[:RELATES_TO]->(chatconversationvw),
-	
 
-	// RELEASE X TERM
-
-	(gvflightcancellationone)-[:RELATES_TO]->(charlottesfeedback),
-	(gvflightcancellationone)-[:RELATES_TO]->(gvtask),
-	(gvflightcancellationone)-[:RELATES_TO]->(fsp),
-	(gvflightcancellationone)-[:RELATES_TO]->(direct),
-	(gvflightcancellationone)-[:RELATES_TO]->(customer),
-
-	(gvspecialloadsone)-[:RELATES_TO]->(charlottesfeedback),
-	(gvspecialloadsone)-[:RELATES_TO]->(gvtask),
-	(gvspecialloadsone)-[:RELATES_TO]->(fsp),
-	(gvspecialloadsone)-[:RELATES_TO]->(direct),
-	(gvspecialloadsone)-[:RELATES_TO]->(customer),
-
-	(gvreferralstwo)-[:RELATES_TO]->(membership),
-
-	(cmanewregflowone)-[:RELATES_TO]->(customer),
-
-	(cmanewregflowtwo)-[:RELATES_TO]->(customer),
-
-	(cmageneralimprovementsone)-[:RELATES_TO]->(charlottesfeedback),
-
-	(cmageneralimprovementstwo)-[:RELATES_TO]->(charlottesfeedback),
-
-	(cmareferralsone)-[:RELATES_TO]->(membership),
-
-	(cmareferralstwo)-[:RELATES_TO]->(membership),
-
-	(cmaadhocone)-[:RELATES_TO]->(adhocflight),
-
-	(cmaadhoctwo)-[:RELATES_TO]->(adhocflight),
-
-	(cmaadhocthree)-[:RELATES_TO]->(adhocflight),
-
-	(cmacancelflightsone)-[:RELATES_TO]->(charlottesfeedback),
-		
-	(cmxnewregflowone)-[:RELATES_TO]->(customer),
-
-	(cmxnewregflowtwo)-[:RELATES_TO]->(customer),
-
-	(cmxgeneralimprovementsone)-[:RELATES_TO]->(charlottesfeedback),
-
-	(cmxgeneralimprovementstwo)-[:RELATES_TO]->(charlottesfeedback),
-
-	(cmxreferralsone)-[:RELATES_TO]->(membership),
-
-	(cmxreferralstwo)-[:RELATES_TO]->(membership),
-
-	(cmxadhocone)-[:RELATES_TO]->(adhocflight),
-
-	(cmxadhoctwo)-[:RELATES_TO]->(adhocflight),
-
-	(cmxadhocthree)-[:RELATES_TO]->(adhocflight),
-
-	(cmxcancelflightsone)-[:RELATES_TO]->(charlottesfeedback),
-	
-	(vwnewregflowone)-[:RELATES_TO]->(customer),
-
-	(vwnewregflowtwo)-[:RELATES_TO]->(customer),
-
-	(vwgeneralimprovementsone)-[:RELATES_TO]->(charlottesfeedback),
-
-	(vwgeneralimprovementstwo)-[:RELATES_TO]->(charlottesfeedback),
-
-	(vwreferralsone)-[:RELATES_TO]->(membership),
-
-	(vwreferralstwo)-[:RELATES_TO]->(membership),
-
-	(vwadhocone)-[:RELATES_TO]->(adhocflight),
-
-	(vwadhoctwo)-[:RELATES_TO]->(adhocflight),
-
-	(vwadhocthree)-[:RELATES_TO]->(adhocflight),
-
-	(vwcancelflightsone)-[:RELATES_TO]->(charlottesfeedback),
-		
-	(chatms)-[:RELATES_TO]->(gvchat),
-	(chatms)-[:RELATES_TO]->(microservice),
-
-	(fbchat)-[:RELATES_TO]->(gvchat),
-
-	(ioschat)-[:RELATES_TO]->(cma),
-	(ioschat)-[:RELATES_TO]->(customerapps),
-
-	(androidchat)-[:RELATES_TO]->(cmx),
-	(androidchat)-[:RELATES_TO]->(customerapps),
-
-	(embeddablechat)-[:RELATES_TO]->(vw),
-	(embeddablechat)-[:RELATES_TO]->(customerapps),
-
-		
 	// MODULE X RELEASE
 
 	(specialloads)<-[:BELONGS_TO]-(gvspecialloadsone),
@@ -517,6 +462,191 @@ CREATE
 	(echat)-[:RELATES_TO]->(gvchat),
 	
 	(gvchat)<-[:BELONGS_TO]-(gvchatone),
-	(gvchat)<-[:BELONGS_TO]-(gvchattwo)
+	(gvchat)<-[:BELONGS_TO]-(gvchattwo),
+
+	// RELEASE X TERM
+
+	(gvflightcancellationone)-[:RELATES_TO]->(charlottesfeedback),
+	(gvflightcancellationone)-[:RELATES_TO]->(gvtask),
+	(gvflightcancellationone)-[:RELATES_TO]->(fsp),
+	(gvflightcancellationone)-[:RELATES_TO]->(direct),
+	(gvflightcancellationone)-[:RELATES_TO]->(customer),
+	(gvflightcancellationone)-[:RELATES_TO]->(releasejira),
+
+	(gvspecialloadsone)-[:RELATES_TO]->(charlottesfeedback),
+	(gvspecialloadsone)-[:RELATES_TO]->(gvtask),
+	(gvspecialloadsone)-[:RELATES_TO]->(fsp),
+	(gvspecialloadsone)-[:RELATES_TO]->(direct),
+	(gvspecialloadsone)-[:RELATES_TO]->(customer),
+	(gvspecialloadsone)-[:RELATES_TO]->(releasejira),
+
+	(gvreferralstwo)-[:RELATES_TO]->(membership),
+	(gvreferralstwo)-[:RELATES_TO]->(releasejira),
+
+	(cmanewregflowone)-[:RELATES_TO]->(customer),
+	(cmanewregflowone)-[:RELATES_TO]->(releasejira),
+
+	(cmanewregflowtwo)-[:RELATES_TO]->(customer),
+	(cmanewregflowtwo)-[:RELATES_TO]->(releasejira),
+
+	(cmageneralimprovementsone)-[:RELATES_TO]->(charlottesfeedback),
+	(cmageneralimprovementsone)-[:RELATES_TO]->(releasejira),
+
+	(cmageneralimprovementstwo)-[:RELATES_TO]->(charlottesfeedback),
+	(cmageneralimprovementstwo)-[:RELATES_TO]->(releasejira),
+
+	(cmareferralsone)-[:RELATES_TO]->(membership),
+	(cmareferralsone)-[:RELATES_TO]->(releasejira),
+
+	(cmareferralstwo)-[:RELATES_TO]->(membership),
+	(cmareferralstwo)-[:RELATES_TO]->(releasejira),
+
+	(cmaadhocone)-[:RELATES_TO]->(adhocflight),
+	(cmaadhocone)-[:RELATES_TO]->(releasejira),
+
+	(cmaadhoctwo)-[:RELATES_TO]->(adhocflight),
+	(cmaadhoctwo)-[:RELATES_TO]->(releasejira),
+
+	(cmaadhocthree)-[:RELATES_TO]->(adhocflight),
+	(cmaadhocthree)-[:RELATES_TO]->(releasejira),
+
+	(cmacancelflightsone)-[:RELATES_TO]->(charlottesfeedback),
+	(cmacancelflightsone)-[:RELATES_TO]->(releasejira),
+		
+	(cmxnewregflowone)-[:RELATES_TO]->(customer),
+	(cmxnewregflowone)-[:RELATES_TO]->(releasejira),
+
+	(cmxnewregflowtwo)-[:RELATES_TO]->(customer),
+	(cmxnewregflowtwo)-[:RELATES_TO]->(releasejira),
+
+	(cmxgeneralimprovementsone)-[:RELATES_TO]->(charlottesfeedback),
+	(cmxgeneralimprovementsone)-[:RELATES_TO]->(releasejira),
+
+	(cmxgeneralimprovementstwo)-[:RELATES_TO]->(charlottesfeedback),
+	(cmxgeneralimprovementstwo)-[:RELATES_TO]->(releasejira),
+
+	(cmxreferralsone)-[:RELATES_TO]->(membership),
+	(cmxreferralsone)-[:RELATES_TO]->(releasejira),
+
+	(cmxreferralstwo)-[:RELATES_TO]->(membership),
+	(cmxreferralstwo)-[:RELATES_TO]->(releasejira),
+
+	(cmxadhocone)-[:RELATES_TO]->(adhocflight),
+	(cmxadhocone)-[:RELATES_TO]->(releasejira),
+
+	(cmxadhoctwo)-[:RELATES_TO]->(adhocflight),
+	(cmxadhoctwo)-[:RELATES_TO]->(releasejira),
+
+	(cmxadhocthree)-[:RELATES_TO]->(adhocflight),
+	(cmxadhocthree)-[:RELATES_TO]->(releasejira),
+
+	(cmxcancelflightsone)-[:RELATES_TO]->(charlottesfeedback),
+	(cmxcancelflightsone)-[:RELATES_TO]->(releasejira),
 	
+	(vwnewregflowone)-[:RELATES_TO]->(customer),
+	(vwnewregflowone)-[:RELATES_TO]->(releasejira),
+
+	(vwnewregflowtwo)-[:RELATES_TO]->(customer),
+	(vwnewregflowtwo)-[:RELATES_TO]->(releasejira),
+
+	(vwgeneralimprovementsone)-[:RELATES_TO]->(charlottesfeedback),
+	(vwgeneralimprovementsone)-[:RELATES_TO]->(releasejira),
+
+	(vwgeneralimprovementstwo)-[:RELATES_TO]->(charlottesfeedback),
+	(vwgeneralimprovementstwo)-[:RELATES_TO]->(releasejira),
+
+	(vwreferralsone)-[:RELATES_TO]->(membership),
+	(vwreferralsone)-[:RELATES_TO]->(releasejira),
+
+	(vwreferralstwo)-[:RELATES_TO]->(membership),
+	(vwreferralstwo)-[:RELATES_TO]->(releasejira),
+
+	(vwadhocone)-[:RELATES_TO]->(adhocflight),
+	(vwadhocone)-[:RELATES_TO]->(releasejira),
+
+	(vwadhoctwo)-[:RELATES_TO]->(adhocflight),
+	(vwadhoctwo)-[:RELATES_TO]->(releasejira),
+
+	(vwadhocthree)-[:RELATES_TO]->(adhocflight),
+	(vwadhocthree)-[:RELATES_TO]->(releasejira),
+
+	(vwcancelflightsone)-[:RELATES_TO]->(charlottesfeedback),
+	(vwcancelflightsone)-[:RELATES_TO]->(releasejira),
+
+	(chatms)-[:RELATES_TO]->(gvchat),
+	(chatms)-[:RELATES_TO]->(microservice),
+	(chatms)-[:RELATES_TO]->(releasejira),
+
+	(fbchat)-[:RELATES_TO]->(gvchat),
+	(fbchat)-[:RELATES_TO]->(releasejira),
+
+	(ioschat)-[:RELATES_TO]->(cma),
+	(ioschat)-[:RELATES_TO]->(customerapps),
+	(ioschat)-[:RELATES_TO]->(releasejira),
+
+	(androidchat)-[:RELATES_TO]->(cmx),
+	(androidchat)-[:RELATES_TO]->(customerapps),
+	(androidchat)-[:RELATES_TO]->(releasejira),
+
+	(embeddablechat)-[:RELATES_TO]->(vw),
+	(embeddablechat)-[:RELATES_TO]->(customerapps),
+	(embeddablechat)-[:RELATES_TO]->(releasejira),
+
+	// TERM x TERM 
+
+	(scrum)<-[:RELATES_TO]-(sprint),
+	(scrum)<-[:RELATES_TO]-(planning),
+	(scrum)<-[:RELATES_TO]-(retrospective),
+	(scrum)<-[:RELATES_TO]-(grooming),
+	(scrum)<-[:RELATES_TO]-(jira),
+	(scrum)<-[:RELATES_TO]-(confluence),
+	(scrum)<-[:RELATES_TO]-(dev),
+	(scrum)<-[:RELATES_TO]-(qa),	
+	(scrum)<-[:RELATES_TO]-(po),	
+	(scrum)<-[:RELATES_TO]-(pm),
+	(scrum)<-[:RELATES_TO]-(devteam),	
+	(scrum)<-[:RELATES_TO]-(devlead),
+	(scrum)<-[:RELATES_TO]-(qateam),
+	(scrum)<-[:RELATES_TO]-(qalead),
+	(sprint)<-[:RELATES_TO]-(planning),
+	(sprint)<-[:RELATES_TO]-(retrospective),
+	(sprint)<-[:RELATES_TO]-(grooming),
+	(po)<-[:RELATES_TO]-(grooming),
+	(jira)<-[:RELATES_TO]-(grooming),
+	(jira)<-[:RELATES_TO]-(releasejira),
+	(jira)<-[:RELATES_TO]-(backlog),
+	(fixversion)<-[:RELATES_TO]-(releasejira),
+	(fixversion)<-[:RELATES_TO]-(hotfix),
+	
+	// TERM X PERSON
+
+	(po)<-[:RELATES_TO]-(jackson),
+	(po)<-[:RELATES_TO]-(alvaro),
+	(po)<-[:RELATES_TO]-(taina),
+	(po)<-[:RELATES_TO]-(talilane),
+	(pm)<-[:RELATES_TO]-(mike),
+	(devlead)<-[:RELATES_TO]-(carmo),
+	(devlead)<-[:RELATES_TO]-(rener),
+	(devlead)<-[:RELATES_TO]-(fernandes),
+	(backend)<-[:WORKED_ON]-(jackson),
+	(backend)<-[:WORKED_ON]-(alvaro),
+	(backend)<-[:WORKED_ON]-(carmo),
+	(frontend)<-[:WORKED_ON]-(alvaro),
+	(frontend)<-[:WORKED_ON]-(talilane),
+	(frontend)<-[:WORKED_ON]-(taina),
+	(frontend)<-[:WORKED_ON]-(fernandes),
+	(frontend)<-[:WORKED_ON]-(rener),
+
+	// TERM x TEAM
+
+	(devteam)<-[:RELATES_TO]-(teamcarmo),
+	(devteam)<-[:RELATES_TO]-(teamfernandes),
+	(devteam)<-[:RELATES_TO]-(teambaffa),
+
+	// TEAM X PERSON
+
+	(teamcarmo)<-[:BELONGS_TO {function: "DevLead"}]-(carmo),
+	(teamfernandes)<-[:BELONGS_TO {function: "DevLead"}]-(fernandes),
+	(teambaffa)<-[:BELONGS_TO {function: "DevLead"}]-(rener)
+
 	;
