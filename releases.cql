@@ -173,6 +173,23 @@ CREATE
 	(qalead:Term {name: "Quality Leader", description: ""}),
 	(devteam:Term {name: "Development Team", description: ""}),
 	(qateam:Term {name: "Quality Team", description: ""}),
+	(flightcentre:Term {name: "Flight Centre", description: ""}),
+	(itinerarylist:Term {name: "Itinerary List", description: ""}),
+	(fla:Term {name: "Flight List Access", description: ""}),
+	(emailnotification:Term {name: "E-mail Notification", description: ""}),
+	(pushnotification:Term {name: "Push Notification", description: ""}),
+	(bookingrequest:Term {name: "Booking Request", description: ""}),
+	(bookingconfirm:Term {name: "Booking Confirm", description: ""}),
+	(bookingchange:Term {name: "Booking Change", description: ""}),
+	(cateringproposal:Term {name: "Catering Proposal", description: ""}),
+	(paxdetailsmissing:Term {name: "Pax Details Missing", description: ""}),
+	(servicerequest:Term {name: "Service Request", description: ""}),
+	(topupreceived:Term {name: "TopUp Received", description: ""}),
+	(signuprequest:Term {name: "SignUp Request using Bank Transfer", description: ""}),
+	(signupreceived:Term {name: "SignUp Received using Bank Transfer", description: ""}),
+	(signupcc:Term {name: "SignUp using Credit Card", description: ""}),
+	(offermatch:Term {name: "Offer Match", description: ""}),
+
 
 	// RELATIONSHIPS
 
@@ -639,22 +656,34 @@ CREATE
 		(gvreferralstwo)-[:RELATES_TO]->(releasejira),
 
 		(gvprivacyone)-[:RELATES_TO]->(releasejira),
+		(gvprivacyone)-[:RELATES_TO]->(fla),
 
 		(gvprivacyonedotone)-[:RELATES_TO]->(releasejira),
 
 		(gvprivacyonedottwo)-[:RELATES_TO]->(releasejira),
+		(gvprivacyonedottwo)-[:RELATES_TO]->(fla),
+		(gvprivacyonedottwo)-[:RELATES_TO]->(flightcentre),
+		(gvprivacyonedottwo)-[:RELATES_TO]->(itinerarylist),
+		(gvprivacyonedottwo)-[:RELATES_TO]->(emailnotification),
+		(gvprivacyonedottwo)-[:RELATES_TO]->(pushnotification),
 
 		(gvenhancednotificationsone)-[:RELATES_TO]->(releasejira),
+		(gvenhancednotificationsone)-[:RELATES_TO]->(emailnotification),
 
 		(gvenhancednotificationsonedotone)-[:RELATES_TO]->(releasejira),
+		(gvenhancednotificationsonedotone)-[:RELATES_TO]->(emailnotification),
 
 		(gvenhancednotificationstwo)-[:RELATES_TO]->(releasejira),
+		(gvenhancednotificationstwo)-[:RELATES_TO]->(emailnotification),
 
 		(gvenhancednotificationsthree)-[:RELATES_TO]->(releasejira),
+		(gvenhancednotificationsthree)-[:RELATES_TO]->(emailnotification),
 
 		(gvenhancednotificationsfour)-[:RELATES_TO]->(releasejira),
+		(gvenhancednotificationsthree)-[:RELATES_TO]->(emailnotification),
 
 		(gvenhancednotificationsfive)-[:RELATES_TO]->(releasejira),
+		(gvenhancednotificationsfive)-[:RELATES_TO]->(offermatch),
 
 		(cmanewregflowone)-[:RELATES_TO]->(customer),
 		(cmanewregflowone)-[:RELATES_TO]->(releasejira),
@@ -790,7 +819,29 @@ CREATE
 		(jira)<-[:RELATES_TO]-(backlog),
 		(fixversion)<-[:RELATES_TO]-(releasejira),
 		(fixversion)<-[:RELATES_TO]-(hotfix),
-
+		(emailnotification)<-[:RELATES_TO]-(bookingchange),
+		(emailnotification)<-[:RELATES_TO]-(bookingconfirm),
+		(emailnotification)<-[:RELATES_TO]-(bookingrequest),
+		(emailnotification)<-[:RELATES_TO]-(cateringproposal),
+		(emailnotification)<-[:RELATES_TO]-(paxdetailsmissing),
+		(emailnotification)<-[:RELATES_TO]-(servicerequest),
+		(emailnotification)<-[:RELATES_TO]-(topupreceived),
+		(emailnotification)<-[:RELATES_TO]-(signuprequest),
+		(emailnotification)<-[:RELATES_TO]-(signupreceived),
+		(emailnotification)<-[:RELATES_TO]-(signupcc),
+		(emailnotification)<-[:RELATES_TO]-(offermatch),
+		(pushnotification)<-[:RELATES_TO]-(bookingchange),
+		(pushnotification)<-[:RELATES_TO]-(bookingconfirm),
+		(pushnotification)<-[:RELATES_TO]-(bookingrequest),
+		(pushnotification)<-[:RELATES_TO]-(cateringproposal),
+		(pushnotification)<-[:RELATES_TO]-(paxdetailsmissing),
+		(pushnotification)<-[:RELATES_TO]-(servicerequest),
+		(pushnotification)<-[:RELATES_TO]-(topupreceived),
+		(pushnotification)<-[:RELATES_TO]-(signuprequest),
+		(pushnotification)<-[:RELATES_TO]-(signupreceived),
+		(pushnotification)<-[:RELATES_TO]-(signupcc),
+		(pushnotification)<-[:RELATES_TO]-(offermatch),
+		
 		// TERM X PERSON
 
 		(po)<-[:RELATES_TO]-(jackson),
